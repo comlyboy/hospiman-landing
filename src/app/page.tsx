@@ -62,11 +62,6 @@ export default function HomePageComponent() {
           </div>
         </section>
 
-        <section className="flex flex-col gap-6 bg-brand-50 py-10">
-          <h2 className="text-center text-xs font-bold tracking-wider text-ink-muted">OUR CLIENTS</h2>
-          <ClientsMarqueeComponent />
-        </section>
-
         <section className="flex flex-col gap-11 px-6 py-24 md:px-16">
           <div className="mx-auto flex max-w-2xl flex-col items-center gap-3.5 text-center">
             <span className="text-xs font-bold tracking-wider text-brand-500">MODULES</span>
