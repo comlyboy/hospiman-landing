@@ -7,6 +7,7 @@ export interface SiteConfig {
   phoneDisplay: string;
   phoneHref: string;
   whatsappHref: string;
+  whatsappPhoneDigits: string;
   email: string;
   addressLine: string;
   keywords: string[];
@@ -38,6 +39,7 @@ export const siteConfig: SiteConfig = {
   phoneDisplay: "+234 706 729 5663",
   phoneHref: "tel:+2347067295663",
   whatsappHref: "https://wa.me/2347067295663",
+  whatsappPhoneDigits: "2347067295663",
   email: "info@hospiman.com",
   addressLine: "10 Hughes Avenue, Yaba, Lagos",
   keywords: [

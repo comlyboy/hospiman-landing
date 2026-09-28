@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Sora, IBM_Plex_Sans } from "next/font/google";
 import { siteConfig } from "@/lib/site-config";
+import WhatsAppWidgetComponent from "@/components/WhatsAppWidgetComponent";
 import "./globals.css";
 
 const sora = Sora({
@@ -86,6 +87,7 @@ export default function RootLayoutComponent({ children }: RootLayoutProps) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
         {children}
+        <WhatsAppWidgetComponent />
       </body>
     </html>
   );
