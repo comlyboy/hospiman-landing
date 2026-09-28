@@ -114,7 +114,7 @@ export default function PrivacyPolicyPageComponent() {
         <h2 className="mt-3 text-xl font-bold">Contact Us</h2>
         <p>
           If you have any questions or suggestions about our Privacy Policy, do not hesitate to{" "}
-          <a href="/contact" className="font-semibold text-brand-700">
+          <a href="/contact" className="font-semibold text-brand-700 transition-colors duration-200 hover:text-brand-800 hover:underline">
             contact us
           </a>
           .

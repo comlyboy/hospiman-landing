@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import HeaderComponent from "@/components/HeaderComponent";
 import FooterComponent from "@/components/FooterComponent";
+import RevealComponent from "@/components/RevealComponent";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -62,13 +63,15 @@ export default function PricingPageComponent() {
       <HeaderComponent active="pricing" />
 
       <main>
-        <section className="flex flex-col items-center gap-2.5 px-6 pt-14 pb-4 text-center md:px-16">
-          <span className="text-xs font-bold tracking-wider text-brand-500">PRICING</span>
-          <h1 className="text-[32px] font-bold tracking-tight">There&apos;s no one-size-fits-all plan.</h1>
+        <section className="px-6 pt-14 pb-4 md:px-16">
+          <RevealComponent className="flex flex-col items-center gap-2.5 text-center">
+            <span className="text-xs font-bold tracking-wider text-brand-500">PRICING</span>
+            <h1 className="text-[32px] font-bold tracking-tight">There&apos;s no one-size-fits-all plan.</h1>
+          </RevealComponent>
         </section>
 
         <section className="flex items-center justify-center px-6 py-16 md:px-16">
-          <div className="flex w-full max-w-lg flex-col gap-2 rounded-[20px] border border-line bg-white p-10 shadow-[0_20px_50px_rgba(46,33,64,0.08)]">
+          <RevealComponent className="flex w-full max-w-lg flex-col gap-2 rounded-[20px] border border-line bg-white p-10 shadow-[0_20px_50px_rgba(46,33,64,0.08)]">
             <span className="text-xs font-bold tracking-wider text-brand-500">CONTACT SALES</span>
             <p className="mt-1.5 mb-2.5 text-[15px] leading-relaxed text-ink-muted">
               Every hospital&apos;s setup is different, so pricing starts with a short conversation about your
@@ -76,8 +79,11 @@ export default function PricingPageComponent() {
             </p>
 
             {contactRows.map((row) => (
-              <div key={row.label} className="flex items-center gap-3.5 border-b border-line py-4 last:border-b-0">
-                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[10px] bg-brand-50">
+              <div
+                key={row.label}
+                className="group flex items-center gap-3.5 border-b border-line py-4 transition-colors duration-200 last:border-b-0 hover:bg-brand-50/50"
+              >
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[10px] bg-brand-50 transition-transform duration-200 group-hover:scale-110">
                   {row.icon}
                 </div>
                 <div>
@@ -89,11 +95,11 @@ export default function PricingPageComponent() {
 
             <a
               href={`mailto:${siteConfig.email}`}
-              className="mt-3.5 rounded-[9px] bg-brand-700 py-3.5 text-center text-[15px] font-bold text-white"
+              className="mt-3.5 rounded-[9px] bg-brand-700 py-3.5 text-center text-[15px] font-bold text-white transition-all duration-200 hover:bg-brand-800 active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
             >
               Contact Sales
             </a>
-          </div>
+          </RevealComponent>
         </section>
       </main>
 

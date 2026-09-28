@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import HeaderComponent from "@/components/HeaderComponent";
 import FooterComponent from "@/components/FooterComponent";
+import RevealComponent from "@/components/RevealComponent";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -76,16 +77,18 @@ export default function ContactPageComponent() {
       <HeaderComponent active="contact" />
 
       <main>
-        <section className="flex flex-col items-center gap-2.5 px-6 pt-14 pb-4 text-center md:px-16">
-          <span className="text-xs font-bold tracking-wider text-brand-500">GET IN TOUCH</span>
-          <h1 className="text-[32px] font-bold tracking-tight">Contact Us</h1>
+        <section className="px-6 pt-14 pb-4 md:px-16">
+          <RevealComponent className="flex flex-col items-center gap-2.5 text-center">
+            <span className="text-xs font-bold tracking-wider text-brand-500">GET IN TOUCH</span>
+            <h1 className="text-[32px] font-bold tracking-tight">Contact Us</h1>
+          </RevealComponent>
         </section>
 
         <section className="mx-auto flex max-w-5xl flex-col gap-14 px-6 py-16 md:flex-row md:px-16">
-          <div className="flex shrink-0 flex-col gap-5 md:w-[340px]">
+          <RevealComponent className="flex shrink-0 flex-col gap-5 md:w-85">
             {contactDetails.map((detail) => (
-              <div key={detail.label} className="flex items-center gap-3.5">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[11px] bg-brand-50">
+              <div key={detail.label} className="group flex items-center gap-3.5">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[11px] bg-brand-50 transition-transform duration-200 group-hover:scale-110">
                   {detail.icon}
                 </div>
                 <div>
@@ -94,13 +97,14 @@ export default function ContactPageComponent() {
                 </div>
               </div>
             ))}
-          </div>
+          </RevealComponent>
 
+          <RevealComponent delayMs={100} className="flex-1">
           <form
             action={`mailto:${siteConfig.email}`}
             method="post"
             encType="text/plain"
-            className="flex flex-1 flex-col gap-4 rounded-[18px] border border-line bg-white p-8"
+            className="flex flex-col gap-4 rounded-[18px] border border-line bg-white p-8"
           >
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div className="flex flex-col">
@@ -113,7 +117,7 @@ export default function ContactPageComponent() {
                   type="text"
                   required
                   placeholder="Chidinma"
-                  className="rounded-lg border border-line px-3 py-2.5 text-sm focus:outline-2 focus:outline-brand-500"
+                  className="rounded-lg border border-line px-3 py-2.5 text-sm transition-colors duration-200 hover:border-ink-faint focus:outline-2 focus:outline-brand-500"
                 />
               </div>
               <div className="flex flex-col">
@@ -126,7 +130,7 @@ export default function ContactPageComponent() {
                   type="text"
                   required
                   placeholder="Eze"
-                  className="rounded-lg border border-line px-3 py-2.5 text-sm focus:outline-2 focus:outline-brand-500"
+                  className="rounded-lg border border-line px-3 py-2.5 text-sm transition-colors duration-200 hover:border-ink-faint focus:outline-2 focus:outline-brand-500"
                 />
               </div>
             </div>
@@ -142,7 +146,7 @@ export default function ContactPageComponent() {
                   type="tel"
                   required
                   placeholder="+234 800 000 0000"
-                  className="rounded-lg border border-line px-3 py-2.5 text-sm focus:outline-2 focus:outline-brand-500"
+                  className="rounded-lg border border-line px-3 py-2.5 text-sm transition-colors duration-200 hover:border-ink-faint focus:outline-2 focus:outline-brand-500"
                 />
               </div>
               <div className="flex flex-col">
@@ -155,7 +159,7 @@ export default function ContactPageComponent() {
                   type="email"
                   required
                   placeholder="you@hospital.com"
-                  className="rounded-lg border border-line px-3 py-2.5 text-sm focus:outline-2 focus:outline-brand-500"
+                  className="rounded-lg border border-line px-3 py-2.5 text-sm transition-colors duration-200 hover:border-ink-faint focus:outline-2 focus:outline-brand-500"
                 />
               </div>
             </div>
@@ -170,7 +174,7 @@ export default function ContactPageComponent() {
                 type="text"
                 required
                 placeholder="Demo request"
-                className="rounded-lg border border-line px-3 py-2.5 text-sm focus:outline-2 focus:outline-brand-500"
+                className="rounded-lg border border-line px-3 py-2.5 text-sm transition-colors duration-200 hover:border-ink-faint focus:outline-2 focus:outline-brand-500"
               />
             </div>
 
@@ -184,13 +188,13 @@ export default function ContactPageComponent() {
                 required
                 rows={4}
                 placeholder="Tell us about your hospital and what you need."
-                className="rounded-lg border border-line px-3 py-2.5 text-sm focus:outline-2 focus:outline-brand-500"
+                className="rounded-lg border border-line px-3 py-2.5 text-sm transition-colors duration-200 hover:border-ink-faint focus:outline-2 focus:outline-brand-500"
               />
             </div>
 
             <button
               type="submit"
-              className="rounded-[9px] bg-brand-700 py-3.5 text-[15px] font-bold text-white"
+              className="rounded-[9px] bg-brand-700 py-3.5 text-[15px] font-bold text-white transition-all duration-200 hover:bg-brand-800 active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
             >
               SEND MESSAGE
             </button>
@@ -198,6 +202,7 @@ export default function ContactPageComponent() {
               This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.
             </p>
           </form>
+          </RevealComponent>
         </section>
       </main>
 

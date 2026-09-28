@@ -1,5 +1,6 @@
 import { siteConfig } from "@/lib/site-config";
 import FrontDeskPreviewComponent from "@/components/FrontDeskPreviewComponent";
+import RevealComponent from "@/components/RevealComponent";
 
 const heroChips = [
   "Patient Records",
@@ -23,7 +24,7 @@ export default function HeroModernComponent() {
       />
 
       <div className="relative mx-auto flex max-w-6xl flex-col items-center gap-14 lg:flex-row lg:items-center lg:justify-between">
-        <div className="flex flex-col items-center gap-6 text-center lg:max-w-xl lg:items-start lg:text-left">
+        <RevealComponent className="flex flex-col items-center gap-6 text-center lg:max-w-xl lg:items-start lg:text-left">
           <span className="rounded-full border border-white/25 px-4 py-1.5 text-xs font-semibold tracking-wider text-white/85">
             NIGERIA&apos;S HOSPITAL &amp; EMR PLATFORM
           </span>
@@ -34,13 +35,13 @@ export default function HeroModernComponent() {
           <div className="mt-1 flex flex-wrap justify-center gap-3.5 lg:justify-start">
             <a
               href={siteConfig.links.createAccount}
-              className="rounded-[9px] bg-white px-6 py-3.5 text-[15px] font-bold text-brand-900"
+              className="rounded-[9px] bg-white px-6 py-3.5 text-[15px] font-bold text-brand-900 transition-all duration-200 hover:bg-white/90 hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0 active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
               Create Account
             </a>
             <a
               href={siteConfig.links.openApp}
-              className="rounded-[9px] border border-white/35 px-6 py-3.5 text-[15px] font-semibold text-white"
+              className="rounded-[9px] border border-white/35 px-6 py-3.5 text-[15px] font-semibold text-white transition-all duration-200 hover:border-white/60 hover:bg-white/10 active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
               Open App
             </a>
@@ -55,9 +56,11 @@ export default function HeroModernComponent() {
               </span>
             ))}
           </div>
-        </div>
+        </RevealComponent>
 
-        <FrontDeskPreviewComponent />
+        <RevealComponent delayMs={150}>
+          <FrontDeskPreviewComponent />
+        </RevealComponent>
       </div>
     </section>
   );

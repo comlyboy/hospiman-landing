@@ -10,7 +10,7 @@ export default function ClientsMarqueeComponent() {
       {clientLogos.map((client) => (
         <div
           key={client.name}
-          className="mx-3 flex h-20 w-44 shrink-0 items-center justify-center rounded-lg border border-line bg-white p-3"
+          className="mx-3 flex h-20 w-44 shrink-0 items-center justify-center rounded-lg border border-line bg-white p-3 transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-500/40 hover:shadow-md"
         >
           <Image
             src={client.src}

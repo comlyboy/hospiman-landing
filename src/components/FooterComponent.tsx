@@ -19,7 +19,7 @@ export default function FooterComponent() {
     <footer className="bg-brand-900 px-6 pt-14 pb-8 md:px-16">
       <div className="mx-auto flex max-w-6xl flex-col gap-10 md:flex-row md:justify-between">
         <div className="flex max-w-xs flex-col gap-3.5">
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-2.5 transition-opacity duration-200 hover:opacity-80">
             <Image src="/hospiman-mark.png" alt="" width={26} height={26} className="rounded-md" />
             <span className="font-display text-lg font-bold text-white">{siteConfig.name}</span>
           </div>
@@ -46,13 +46,13 @@ export default function FooterComponent() {
 
         <div className="flex flex-col gap-3">
           <span className="text-xs font-bold tracking-wider text-white/45">LINKS</span>
-          <a href={siteConfig.links.login} className="text-sm text-white/72 hover:text-white">
+          <a href={siteConfig.links.login} className="text-sm text-white/72 transition-colors duration-200 hover:text-white">
             Login / Manage Account
           </a>
-          <a href={siteConfig.links.createAccount} className="text-sm text-white/72 hover:text-white">
+          <a href={siteConfig.links.createAccount} className="text-sm text-white/72 transition-colors duration-200 hover:text-white">
             Create Account
           </a>
-          <a href={siteConfig.links.openApp} className="text-sm text-white/72 hover:text-white">
+          <a href={siteConfig.links.openApp} className="text-sm text-white/72 transition-colors duration-200 hover:text-white">
             Open App
           </a>
         </div>
@@ -63,9 +63,9 @@ export default function FooterComponent() {
             <a
               key={social.label}
               href={social.href}
-              className="flex items-center gap-2 text-sm text-white/72 hover:text-white"
+              className="group flex items-center gap-2 text-sm text-white/72 transition-colors duration-200 hover:text-white"
             >
-              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white/12 text-[10px] font-bold text-white">
+              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white/12 text-[10px] font-bold text-white transition-all duration-200 group-hover:scale-110">
                 {social.initials}
               </span>
               {social.label}
@@ -78,7 +78,7 @@ export default function FooterComponent() {
         <span className="text-[13px] text-white/50">
           Copyrights © {new Date().getFullYear()} - {siteConfig.legalName}. All Rights Reserved.
         </span>
-        <a href="/privacy-policy" className="text-sm text-white/72 hover:text-white">
+        <a href="/privacy-policy" className="text-sm text-white/72 transition-colors duration-200 hover:text-white">
           Privacy Policy
         </a>
       </div>

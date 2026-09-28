@@ -26,7 +26,7 @@ export default function HeaderComponent({ active }: HeaderComponentProps) {
     <header>
       <a
         href={siteConfig.phoneHref}
-        className="flex h-9 items-center justify-center gap-2 bg-brand-700 px-6 text-center"
+        className="flex h-9 items-center justify-center gap-2 bg-brand-700 px-6 text-center transition-colors duration-200 hover:bg-brand-800"
       >
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path
@@ -42,7 +42,7 @@ export default function HeaderComponent({ active }: HeaderComponentProps) {
       </a>
 
       <div className="flex h-22 items-center justify-between border-b border-line bg-white px-6 md:px-16">
-        <Link href="/" className="flex items-center">
+        <Link href="/" className="flex items-center transition-opacity duration-200 hover:opacity-80">
           <Image
             src="/hospiman-logo.png"
             alt={siteConfig.name}
@@ -58,7 +58,7 @@ export default function HeaderComponent({ active }: HeaderComponentProps) {
             <Link
               key={item.key}
               href={item.href}
-              className="border-b-2 py-1.5 text-[15px] font-semibold"
+              className="border-b-2 py-1.5 text-[15px] font-semibold transition-colors duration-200 hover:text-brand-700"
               style={{
                 color: item.key === active ? "#5b3e8c" : "#6b6478",
                 borderColor: item.key === active ? "#8962bd" : "transparent",
@@ -70,12 +70,15 @@ export default function HeaderComponent({ active }: HeaderComponentProps) {
         </nav>
 
         <div className="hidden items-center gap-5 md:flex">
-          <a href={siteConfig.links.login} className="text-sm font-semibold text-ink-muted">
+          <a
+            href={siteConfig.links.login}
+            className="text-sm font-semibold text-ink-muted transition-colors duration-200 hover:text-ink"
+          >
             Login
           </a>
           <a
             href={siteConfig.links.createAccount}
-            className="rounded-lg bg-brand-700 px-5 py-2.5 text-sm font-bold text-white"
+            className="rounded-lg bg-brand-700 px-5 py-2.5 text-sm font-bold text-white transition-all duration-200 hover:bg-brand-800 active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
           >
             Create Account
           </a>
@@ -84,7 +87,7 @@ export default function HeaderComponent({ active }: HeaderComponentProps) {
         <details className="group relative md:hidden">
           <summary
             aria-label="Open menu"
-            className="flex h-10 w-10 list-none items-center justify-center rounded-lg border border-line [&::-webkit-details-marker]:hidden"
+            className="flex h-10 w-10 list-none items-center justify-center rounded-lg border border-line transition-colors duration-200 hover:bg-brand-50 [&::-webkit-details-marker]:hidden"
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path
@@ -100,18 +103,21 @@ export default function HeaderComponent({ active }: HeaderComponentProps) {
               <Link
                 key={item.key}
                 href={item.href}
-                className="rounded-lg px-3 py-2 text-[15px] font-semibold"
+                className="rounded-lg px-3 py-2 text-[15px] font-semibold transition-colors duration-200 hover:bg-brand-50"
                 style={{ color: item.key === active ? "#5b3e8c" : "#1a1523" }}
               >
                 {item.label}
               </Link>
             ))}
-            <a href={siteConfig.links.login} className="rounded-lg px-3 py-2 text-[15px] font-semibold text-ink-muted">
+            <a
+              href={siteConfig.links.login}
+              className="rounded-lg px-3 py-2 text-[15px] font-semibold text-ink-muted transition-colors duration-200 hover:bg-brand-50"
+            >
               Login
             </a>
             <a
               href={siteConfig.links.createAccount}
-              className="mt-1 rounded-lg bg-brand-700 px-3 py-2.5 text-center text-sm font-bold text-white"
+              className="mt-1 rounded-lg bg-brand-700 px-3 py-2.5 text-center text-sm font-bold text-white transition-all duration-200 hover:bg-brand-800 active:scale-95"
             >
               Create Account
             </a>
