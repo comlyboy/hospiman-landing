@@ -24,10 +24,10 @@ export interface SiteConfig {
   };
 }
 
-// Update NEXT_PUBLIC_SITE_URL to the real domain this project is deployed to.
+// Set NEXT_PUBLIC_SITE_URL to override this once a permanent domain is picked.
 // Deliberately not defaulting to hospiman.com: this project is an independent
 // redesign concept, not the company's own deployment.
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://hospiman-redesign.example.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://hospiman.netlify.app";
 
 export const siteConfig: SiteConfig = {
   name: "Hospiman",
