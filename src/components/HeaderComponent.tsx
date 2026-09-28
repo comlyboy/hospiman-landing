@@ -46,9 +46,9 @@ export default function HeaderComponent({ active }: HeaderComponentProps) {
           <Image
             src="/hospiman-logo.png"
             alt={siteConfig.name}
-            width={149}
-            height={24}
-            style={{ height: 24, width: "auto" }}
+            width={900}
+            height={200}
+            style={{ height: 32, width: "auto" }}
             priority
           />
         </Link>

@@ -69,20 +69,21 @@ export default function Image() {
           >
             <div
               style={{
-                width: 72,
-                height: 72,
+                width: 84,
+                height: 84,
                 borderRadius: 18,
                 background: "#8962bd",
                 display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: 38,
-                fontWeight: 700,
-                color: "#ffffff",
+                position: "relative",
                 boxShadow: "0 16px 40px rgba(137,98,189,0.45)",
               }}
             >
-              Hi
+              <div style={{ display: "flex", position: "relative", width: 84, height: 84 }}>
+                <div style={{ position: "absolute", left: 24, top: 25, width: 9, height: 35, borderRadius: 5, background: "#ffffff", display: "flex" }} />
+                <div style={{ position: "absolute", left: 50, top: 25, width: 9, height: 35, borderRadius: 5, background: "#ffffff", display: "flex" }} />
+                <div style={{ position: "absolute", left: 29, top: 37, width: 26, height: 9, borderRadius: 5, background: "#ffffff", display: "flex" }} />
+                <div style={{ position: "absolute", left: 60, top: 15, width: 8, height: 8, borderRadius: 4, background: "#ffffff", display: "flex" }} />
+              </div>
             </div>
             <div style={{ display: "flex", fontSize: 44, fontWeight: 700, color: "#ffffff" }}>
               {siteConfig.name}

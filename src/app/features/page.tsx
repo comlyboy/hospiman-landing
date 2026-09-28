@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import HeaderComponent from "@/components/HeaderComponent";
 import FooterComponent from "@/components/FooterComponent";
 import ModuleRowComponent from "@/components/ModuleRowComponent";
+import ClientsMarqueeComponent from "@/components/ClientsMarqueeComponent";
 import { moduleCategories } from "@/lib/modules-data";
 import { siteConfig } from "@/lib/site-config";
 
@@ -53,9 +53,9 @@ export default function FeaturesPageComponent() {
           ))}
         </section>
 
-        <section className="flex flex-col items-center gap-4 bg-brand-50 px-6 py-8 text-center md:px-16">
-          <span className="text-xs font-bold tracking-wider text-ink-muted">OUR CLIENTS</span>
-          <Image src="/hospiman-logo.png" alt={siteConfig.name} width={149} height={24} style={{ height: 26, width: "auto", opacity: 0.85 }} />
+        <section className="flex flex-col gap-6 bg-brand-50 py-10">
+          <h2 className="text-center text-xs font-bold tracking-wider text-ink-muted">OUR CLIENTS</h2>
+          <ClientsMarqueeComponent />
         </section>
 
         <section className="flex flex-col items-center gap-6 bg-brand-900 px-6 py-20 text-center md:px-16">
