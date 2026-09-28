@@ -96,6 +96,11 @@ export default function HomePageComponent() {
           </Link>
         </section>
 
+        <section className="flex flex-col gap-6 bg-brand-50 py-10">
+          <h2 className="text-center text-xs font-bold tracking-wider text-ink-muted">OUR CLIENTS</h2>
+          <ClientsMarqueeComponent />
+        </section>
+
         <section className="flex flex-col items-center gap-6 bg-brand-900 px-6 py-20 text-center md:px-16">
           <h2 className="text-[32px] leading-snug font-bold text-white">
             Be productive. Be more efficient.
