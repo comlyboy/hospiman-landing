@@ -3,6 +3,7 @@ import Link from "next/link";
 import HeaderComponent from "@/components/HeaderComponent";
 import FooterComponent from "@/components/FooterComponent";
 import ModuleCardComponent from "@/components/ModuleCardComponent";
+import ClientsMarqueeComponent from "@/components/ClientsMarqueeComponent";
 import { highlightModules } from "@/lib/modules-data";
 import { siteConfig } from "@/lib/site-config";
 
@@ -59,6 +60,11 @@ export default function HomePageComponent() {
               </span>
             ))}
           </div>
+        </section>
+
+        <section className="flex flex-col gap-6 bg-brand-50 py-10">
+          <h2 className="text-center text-xs font-bold tracking-wider text-ink-muted">OUR CLIENTS</h2>
+          <ClientsMarqueeComponent />
         </section>
 
         <section className="flex flex-col gap-11 px-6 py-24 md:px-16">
