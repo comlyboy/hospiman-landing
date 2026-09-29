@@ -96,7 +96,7 @@ export default function AppPatientsComponent() {
         </div>
       </div>
 
-      <div className="shrink-0 border-t border-line bg-white px-4 py-3">
+      <div className="shrink-0 bg-brand-700 px-4 py-3">
         <div className="relative mx-auto w-full max-w-3xl">
           <svg
             width="16"
@@ -114,7 +114,7 @@ export default function AppPatientsComponent() {
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder="Search patients"
-            className="w-full rounded-full border border-line bg-ground py-2.5 pr-4 pl-9 text-sm text-ink placeholder-ink-faint transition-colors duration-200 hover:border-ink-faint focus:outline-2 focus:outline-brand-500"
+            className="w-full rounded-full border border-line bg-white/90 py-2.5 pr-4 pl-9 text-sm text-ink placeholder-ink-faint transition-colors duration-200 hover:border-ink-faint focus:outline-2 focus:outline-brand-500"
           />
         </div>
       </div>

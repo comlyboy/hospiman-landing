@@ -18,7 +18,7 @@ export default function AppTopBarComponent({ title, onOpenDrawer, showAddPerson 
         </svg>
       </button>
 
-      <span className="absolute left-1/2 -translate-x-1/2 text-sm font-bold tracking-[0.2em] text-white/85 uppercase">
+      <span className="absolute left-1/2 -translate-x-1/2 text-sm font-bold tracking-wide text-white/85 uppercase">
         {title}
       </span>
 

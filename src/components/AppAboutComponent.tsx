@@ -18,7 +18,7 @@ export default function AppAboutComponent() {
             <path d="M19 12H5m0 0 6-6m-6 6 6 6" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </Link>
-        <span className="text-sm font-bold tracking-[0.2em] text-white/85 uppercase">About</span>
+        <span className="text-sm font-bold tracking-wide text-white/85 uppercase">About</span>
         <span className="w-9 shrink-0" aria-hidden />
       </div>
 
