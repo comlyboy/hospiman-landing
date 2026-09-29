@@ -47,32 +47,14 @@ function HomeIcon() {
   );
 }
 
-function ViewIcon() {
+function ActionChip({ label }: { label: string }) {
   return (
-    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path
-        d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="1.8" />
-    </svg>
-  );
-}
-
-function EditIcon() {
-  return (
-    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path
-        d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5Z"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
+    <button
+      type="button"
+      className="rounded-full border border-brand-100 px-3 py-1 text-[11.5px] font-bold text-brand-700 transition-colors duration-200 hover:border-brand-300 hover:bg-brand-50"
+    >
+      {label}
+    </button>
   );
 }
 
@@ -93,29 +75,10 @@ export default function PatientCardComponent({ patient }: { patient: PatientReco
               <span className="rounded-full bg-brand-100 px-2.5 py-0.5 text-[10.5px] font-bold text-brand-700">{patient.gender}</span>
             </div>
 
-            <div className="flex shrink-0 items-center gap-1">
-              <button
-                type="button"
-                className="rounded-full border border-brand-100 px-3 py-1 text-[11.5px] font-bold text-brand-700 transition-colors duration-200 hover:border-brand-300 hover:bg-brand-50"
-              >
-                Check-In
-              </button>
-              <button
-                type="button"
-                aria-label="View"
-                title="View"
-                className="flex h-7 w-7 items-center justify-center rounded-full text-ink-faint transition-colors duration-200 hover:bg-brand-50 hover:text-brand-700"
-              >
-                <ViewIcon />
-              </button>
-              <button
-                type="button"
-                aria-label="Edit"
-                title="Edit"
-                className="flex h-7 w-7 items-center justify-center rounded-full text-ink-faint transition-colors duration-200 hover:bg-brand-50 hover:text-brand-700"
-              >
-                <EditIcon />
-              </button>
+            <div className="flex shrink-0 items-center gap-1.5">
+              <ActionChip label="Check-In" />
+              <ActionChip label="View" />
+              <ActionChip label="Edit" />
             </div>
           </div>
 
