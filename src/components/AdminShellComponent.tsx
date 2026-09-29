@@ -17,7 +17,7 @@ export default function AdminShellComponent({ children }: AdminShellComponentPro
       <AdminTopBarComponent hospitalName="CHRIS MED [1000]" onOpenSidebar={() => setIsSidebarOpen(true)} />
       <div className="flex flex-1 overflow-hidden">
         <AdminSidebarComponent isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
-        <div className="min-w-0 flex-1 overflow-y-auto">{children}</div>
+        <div className="min-w-0 flex-1 overflow-y-auto pt-8">{children}</div>
       </div>
     </div>
   );
