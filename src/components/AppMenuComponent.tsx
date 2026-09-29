@@ -13,10 +13,10 @@ export default function AppMenuComponent() {
   const filtered = menuTiles.filter((tile) => tile.label.toLowerCase().includes(query.toLowerCase()));
 
   return (
-    <div className="flex min-h-screen flex-col bg-brand-50">
+    <div className="flex h-screen flex-col overflow-hidden bg-brand-50">
       <AppTopBarComponent title="Home" onOpenDrawer={() => setIsDrawerOpen(true)} />
 
-      <div className="flex flex-1 flex-col items-center gap-6 px-4 py-10 sm:px-8">
+      <div className="flex flex-1 flex-col items-center gap-6 overflow-y-auto px-4 py-10 sm:px-8">
         <button
           type="button"
           className="flex items-center gap-2 rounded-full bg-brand-500 px-5 py-2.5 text-sm font-semibold text-white shadow-[0_10px_24px_rgba(137,98,189,0.35)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand-600 active:scale-95"

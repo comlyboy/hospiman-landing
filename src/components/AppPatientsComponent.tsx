@@ -13,7 +13,7 @@ export default function AppPatientsComponent() {
   const [isSearchAcrossFacilities, setIsSearchAcrossFacilities] = useState(false);
 
   return (
-    <div className="flex min-h-screen flex-col bg-brand-50">
+    <div className="flex h-screen flex-col overflow-hidden bg-brand-50">
       <AppTopBarComponent title="Patients" onOpenDrawer={() => setIsDrawerOpen(true)} showAddPerson />
 
       <div className="flex shrink-0 items-center gap-2 overflow-x-auto bg-zinc-900 px-4 py-3">
@@ -58,7 +58,7 @@ export default function AppPatientsComponent() {
         </button>
       </div>
 
-      <div className="mx-auto flex w-full max-w-3xl flex-col items-center gap-6 px-4 py-8">
+      <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col items-center gap-6 overflow-y-auto px-4 py-8">
         <h1 className="text-lg font-bold tracking-wide text-ink uppercase">Recent Patient ({patientRecords.length})</h1>
 
         <label className="flex items-center gap-2 text-sm font-semibold text-brand-700">
