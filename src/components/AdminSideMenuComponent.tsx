@@ -41,6 +41,7 @@ const menuItems: MenuItem[] = [
   },
   {
     label: "Invoices",
+    href: "/admin/invoices",
     icon: (
       <svg {...iconProps}>
         <path d="M6 3h9l3 3v15H6V3Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
@@ -77,6 +78,7 @@ const menuItems: MenuItem[] = [
   },
   {
     label: "Sms Sent History",
+    href: "/admin/sms-history",
     icon: (
       <svg {...iconProps}>
         <path d="M4 5h16v11H8l-4 4V5Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
