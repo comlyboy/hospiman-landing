@@ -12,7 +12,7 @@ interface AppDrawerComponentProps {
 const navItems = [
   { label: "Home", href: "/app/menu", icon: <HomeIcon /> },
   { label: "About", href: "/app/about", icon: <AboutIcon /> },
-  ...menuTiles.map((tile) => ({ label: tile.label, href: undefined, icon: tile.icon })),
+  ...menuTiles.map((tile) => ({ label: tile.label, href: tile.href, icon: tile.icon })),
 ].sort((a, b) => a.label.localeCompare(b.label));
 
 function HomeIcon() {

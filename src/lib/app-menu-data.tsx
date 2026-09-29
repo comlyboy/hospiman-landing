@@ -4,6 +4,7 @@ export interface MenuTile {
   label: string;
   description: string;
   icon: ReactNode;
+  href?: string;
 }
 
 export function TileIcon({ d, circles }: { d: string; circles?: { cx: number; cy: number; r: number }[] }) {
@@ -27,6 +28,7 @@ export const menuTiles: MenuTile[] = [
     label: "Patient",
     description: "Search, register and manage every patient record and next-of-kin detail.",
     icon: <TileIcon d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm-7 8a7 7 0 0 1 14 0" circles={[{ cx: 18, cy: 8, r: 2 }]} />,
+    href: "/app/patients",
   },
   {
     label: "Med Report",

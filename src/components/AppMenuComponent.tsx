@@ -3,6 +3,7 @@
 import { useState } from "react";
 import ModuleRowComponent from "@/components/ModuleRowComponent";
 import AppDrawerComponent from "@/components/AppDrawerComponent";
+import AppTopBarComponent from "@/components/AppTopBarComponent";
 import { menuTiles } from "@/lib/app-menu-data";
 
 export default function AppMenuComponent() {
@@ -13,46 +14,7 @@ export default function AppMenuComponent() {
 
   return (
     <div className="flex min-h-screen flex-col bg-brand-50">
-      <div className="relative flex h-14 shrink-0 items-center justify-between bg-brand-500 px-4">
-        <button
-          type="button"
-          onClick={() => setIsDrawerOpen(true)}
-          aria-label="Open menu"
-          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md transition-colors duration-200 hover:bg-white/10"
-        >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M4 7h16M4 12h16M4 17h16" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" />
-          </svg>
-        </button>
-
-        <span className="absolute left-1/2 -translate-x-1/2 text-sm font-bold tracking-[0.2em] text-white/85 uppercase">
-          Home
-        </span>
-
-        <div className="flex items-center gap-4 text-white">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path
-              d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9ZM13.73 21a2 2 0 0 1-3.46 0"
-              stroke="currentColor"
-              strokeWidth="1.8"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path
-              d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-4-1L3 20l1-5.5A8.38 8.38 0 0 1 12.5 3 8.38 8.38 0 0 1 21 11.5Z"
-              stroke="currentColor"
-              strokeWidth="1.8"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            {[0, 1, 2].flatMap((row) => [0, 1, 2].map((col) => <circle key={`${row}-${col}`} cx={5 + col * 7} cy={5 + row * 7} r="1.6" />))}
-          </svg>
-        </div>
-      </div>
+      <AppTopBarComponent title="Home" onOpenDrawer={() => setIsDrawerOpen(true)} />
 
       <div className="flex flex-1 flex-col items-center gap-6 px-4 py-10 sm:px-8">
         <button
@@ -76,7 +38,14 @@ export default function AppMenuComponent() {
 
         <div className="grid w-full max-w-5xl grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((tile) => (
-            <ModuleRowComponent key={tile.label} icon={tile.icon} title={tile.label} description={tile.description} elevateOnHover />
+            <ModuleRowComponent
+              key={tile.label}
+              icon={tile.icon}
+              title={tile.label}
+              description={tile.description}
+              href={tile.href}
+              elevateOnHover
+            />
           ))}
 
           {filtered.length === 0 && (
