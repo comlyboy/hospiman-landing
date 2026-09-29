@@ -15,7 +15,6 @@ export default function AppHomePageComponent() {
       eyebrow="WELCOME BACK"
       title="Login to Hospiman"
       subtitle="This is a demo: enter any email and password to continue."
-      sideLink={{ label: "About", href: "/app/about" }}
     >
       <AppLoginFormComponent />
     </AuthLayoutComponent>

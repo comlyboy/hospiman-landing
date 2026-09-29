@@ -37,18 +37,9 @@ export default function AuthLayoutComponent({ eyebrow, title, subtitle, children
         {children}
       </div>
 
-      {sideLink && (
-        <Link
-          href={sideLink.href}
-          className="relative mt-6 text-sm font-semibold text-brand-700 transition-colors duration-200 hover:text-brand-800"
-        >
-          {sideLink.label}
-        </Link>
-      )}
-
       <p className="relative mt-8 text-xs text-ink-faint">
         © {new Date().getFullYear()}{" "}
-        <Link href="/" className="hover:text-ink-muted hover:underline">
+        <Link href="/" className="underline decoration-ink-faint underline-offset-2 hover:text-ink-muted hover:decoration-ink-muted">
           {siteConfig.legalName}
         </Link>
         . All Rights Reserved.

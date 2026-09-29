@@ -36,7 +36,7 @@ export default function AppAboutComponent() {
         <p className="text-base font-bold text-ink">An application for hospital management</p>
         <p className="text-base font-bold text-ink">
           ©{" "}
-          <Link href="/" className="hover:text-brand-700 hover:underline">
+          <Link href="/" className="underline decoration-ink-faint underline-offset-2 hover:text-brand-700 hover:decoration-brand-700">
             {siteConfig.legalName}
           </Link>
         </p>
