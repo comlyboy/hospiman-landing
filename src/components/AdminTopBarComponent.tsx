@@ -2,31 +2,30 @@
 
 import { useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import AdminSideMenuComponent from "@/components/AdminSideMenuComponent";
 import HospitalSwitcherModalComponent from "@/components/HospitalSwitcherModalComponent";
+import AdminUserMenuComponent from "@/components/AdminUserMenuComponent";
 
 interface AdminTopBarComponentProps {
   hospitalName: string;
+  onOpenSidebar: () => void;
 }
 
 interface PageConfig {
   title: string;
-  showSearch?: boolean;
   leftAction?: "menu" | "back";
 }
 
 const pageConfig: Record<string, PageConfig> = {
   "/admin/dashboard": { title: "Dashboard" },
-  "/admin/invoices": { title: "Invoices", showSearch: true, leftAction: "back" },
-  "/admin/sms-history": { title: "SMS Sent History", showSearch: true },
+  "/admin/invoices": { title: "Invoices", leftAction: "back" },
+  "/admin/sms-history": { title: "SMS Sent History", leftAction: "back" },
 };
 
-export default function AdminTopBarComponent({ hospitalName }: AdminTopBarComponentProps) {
+export default function AdminTopBarComponent({ hospitalName, onOpenSidebar }: AdminTopBarComponentProps) {
   const pathname = usePathname();
   const router = useRouter();
-  const { title, showSearch, leftAction = "menu" } = pageConfig[pathname] ?? { title: "Hospiman" };
+  const { title, leftAction = "menu" } = pageConfig[pathname] ?? { title: "Hospiman" };
 
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSwitcherOpen, setIsSwitcherOpen] = useState(false);
 
   return (
@@ -47,8 +46,8 @@ export default function AdminTopBarComponent({ hospitalName }: AdminTopBarCompon
           <button
             type="button"
             aria-label="Open menu"
-            onClick={() => setIsMenuOpen(true)}
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md transition-colors duration-200 hover:bg-white/10"
+            onClick={onOpenSidebar}
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md transition-colors duration-200 hover:bg-white/10 md:hidden"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M4 7h16M4 12h16M4 17h16" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" />
@@ -70,24 +69,9 @@ export default function AdminTopBarComponent({ hospitalName }: AdminTopBarCompon
           </span>
         </button>
 
-        {showSearch ? (
-          <button
-            type="button"
-            aria-label="Search"
-            onClick={() => document.getElementById("admin-search-input")?.focus()}
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md transition-colors duration-200 hover:bg-white/10"
-          >
-            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <circle cx="11" cy="11" r="7" stroke="#ffffff" strokeWidth="1.8" />
-              <path d="m20 20-3.5-3.5" stroke="#ffffff" strokeWidth="1.8" strokeLinecap="round" />
-            </svg>
-          </button>
-        ) : (
-          <span className="h-9 w-9 shrink-0" aria-hidden="true" />
-        )}
+        <AdminUserMenuComponent />
       </div>
 
-      <AdminSideMenuComponent isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
       <HospitalSwitcherModalComponent isOpen={isSwitcherOpen} onClose={() => setIsSwitcherOpen(false)} />
     </>
   );
