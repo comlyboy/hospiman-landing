@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import HospitalSwitcherModalComponent from "@/components/HospitalSwitcherModalComponent";
@@ -9,40 +8,42 @@ import AdminUserMenuComponent from "@/components/AdminUserMenuComponent";
 
 interface AdminTopBarComponentProps {
   hospitalName: string;
+  onOpenSidebar: () => void;
 }
 
-const pageTitles: Record<string, string> = {
-  "/admin/dashboard": "Dashboard",
-  "/admin/invoices": "Invoices",
-  "/admin/sms-history": "SMS Sent History",
-};
-
-export default function AdminTopBarComponent({ hospitalName }: AdminTopBarComponentProps) {
-  const pathname = usePathname();
-  const title = pageTitles[pathname] ?? "Hospiman";
-
+export default function AdminTopBarComponent({ hospitalName, onOpenSidebar }: AdminTopBarComponentProps) {
   const [isSwitcherOpen, setIsSwitcherOpen] = useState(false);
 
   return (
     <>
-      <div className="flex h-18 items-center justify-between bg-brand-500 px-4">
-        <Link href="/admin/dashboard" className="flex shrink-0 items-center gap-2 transition-opacity duration-200 hover:opacity-80">
-          <Image src="/hospiman-mark.png" alt="" width={30} height={30} className="rounded-md" />
-          <span className="hidden font-display text-base font-bold text-white sm:inline">Hospiman</span>
-        </Link>
+      <div className="relative flex h-18 items-center justify-between bg-brand-500 px-4">
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            aria-label="Open menu"
+            onClick={onOpenSidebar}
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md transition-colors duration-200 hover:bg-white/10 xl:hidden"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 7h16M4 12h16M4 17h16" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" />
+            </svg>
+          </button>
+
+          <Link href="/admin/dashboard" className="flex shrink-0 items-center gap-2 transition-opacity duration-200 hover:opacity-80">
+            <Image src="/hospiman-mark.png" alt="" width={30} height={30} className="rounded-md" />
+            <span className="hidden font-display text-base font-bold text-white sm:inline">Hospiman</span>
+          </Link>
+        </div>
 
         <button
           type="button"
           onClick={() => setIsSwitcherOpen(true)}
-          className="flex flex-col items-center gap-0.5 rounded-lg px-4 py-1.5 transition-colors duration-200 hover:bg-white/10"
+          className="absolute left-1/2 flex -translate-x-1/2 items-center gap-1.5 rounded-full border border-white/25 px-4 py-2 text-[15px] font-bold text-white transition-colors duration-200 hover:bg-white/10"
         >
-          <span className="text-[10px] font-bold tracking-widest text-white/70 uppercase">{title}</span>
-          <span className="flex items-center gap-1.5 text-[15px] font-bold text-white">
-            {hospitalName}
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="m6 9 6 6 6-6" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </span>
+          {hospitalName}
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="m6 9 6 6 6-6" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
         </button>
 
         <AdminUserMenuComponent />

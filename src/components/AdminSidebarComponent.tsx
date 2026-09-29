@@ -1,5 +1,12 @@
+"use client";
+
 import type { ReactNode } from "react";
 import Link from "next/link";
+
+interface AdminSidebarComponentProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
 
 interface MenuItem {
   label: string;
@@ -80,26 +87,54 @@ const menuItems: MenuItem[] = [
   },
 ];
 
-export default function AdminSidebarComponent() {
+export default function AdminSidebarComponent({ isOpen, onClose }: AdminSidebarComponentProps) {
   return (
-    <div className="flex w-56 shrink-0 flex-col border-r border-line bg-white">
-      <nav className="flex flex-col gap-1 p-3">
-        {menuItems.map((item) => {
-          const className =
-            "flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-ink transition-colors duration-200 hover:bg-brand-50 hover:text-brand-700 [&_svg]:text-ink-muted hover:[&_svg]:text-brand-500";
-          return item.href ? (
-            <Link key={item.label} href={item.href} className={className}>
-              {item.icon}
-              {item.label}
-            </Link>
-          ) : (
-            <button key={item.label} type="button" className={`text-left ${className}`}>
-              {item.icon}
-              {item.label}
-            </button>
-          );
-        })}
-      </nav>
-    </div>
+    <>
+      <div
+        onClick={onClose}
+        aria-hidden="true"
+        className={`fixed inset-0 z-40 bg-brand-900/40 backdrop-blur-[2px] transition-opacity duration-300 xl:hidden ${
+          isOpen ? "opacity-100" : "pointer-events-none opacity-0"
+        }`}
+      />
+
+      <div
+        aria-hidden={!isOpen}
+        className={`fixed top-0 left-0 z-50 flex h-full w-64 shrink-0 flex-col bg-white shadow-2xl transition-transform duration-300 xl:static xl:h-auto xl:w-56 xl:translate-x-0 xl:self-stretch xl:border-r xl:border-line xl:shadow-none ${
+          isOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
+        <div className="flex h-18 shrink-0 items-center justify-end border-b border-line px-4 xl:hidden">
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Close menu"
+            className="flex h-8 w-8 items-center justify-center rounded-md transition-colors duration-200 hover:bg-brand-50"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 6l12 12M18 6 6 18" stroke="#1a1523" strokeWidth="1.8" strokeLinecap="round" />
+            </svg>
+          </button>
+        </div>
+
+        <nav className="flex flex-col gap-1 overflow-y-auto p-3">
+          {menuItems.map((item) => {
+            const className =
+              "flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-ink transition-colors duration-200 hover:bg-brand-50 hover:text-brand-700 [&_svg]:text-ink-muted hover:[&_svg]:text-brand-500";
+            return item.href ? (
+              <Link key={item.label} href={item.href} onClick={onClose} className={className}>
+                {item.icon}
+                {item.label}
+              </Link>
+            ) : (
+              <button key={item.label} type="button" onClick={onClose} className={`text-left ${className}`}>
+                {item.icon}
+                {item.label}
+              </button>
+            );
+          })}
+        </nav>
+      </div>
+    </>
   );
 }
