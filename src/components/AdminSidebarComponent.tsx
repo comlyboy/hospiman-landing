@@ -51,6 +51,7 @@ const menuItems: MenuItem[] = [
   },
   {
     label: "My Hospitals",
+    href: "/admin/hospitals",
     icon: (
       <svg {...iconProps}>
         <path d="M4 21V7l8-4 8 4v14" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
