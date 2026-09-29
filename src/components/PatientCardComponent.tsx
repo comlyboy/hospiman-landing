@@ -47,9 +47,38 @@ function HomeIcon() {
   );
 }
 
+function ViewIcon() {
+  return (
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path
+        d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="1.8" />
+    </svg>
+  );
+}
+
+function EditIcon() {
+  return (
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path
+        d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5Z"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 export default function PatientCardComponent({ patient }: { patient: PatientRecord }) {
   return (
-    <div className="group overflow-hidden rounded-xl border border-line bg-white transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-500/30 hover:shadow-lg hover:shadow-brand-900/10">
+    <div className="group overflow-hidden rounded-xl border border-line bg-white transition-all duration-200 hover:border-brand-500/30 hover:shadow-lg hover:shadow-brand-900/10">
       <div className="flex items-start gap-3.5 p-4">
         <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[9px] bg-brand-50 text-sm font-bold text-brand-700 transition-transform duration-200 group-hover:scale-110">
           {patient.avatarInitials}
@@ -76,15 +105,15 @@ export default function PatientCardComponent({ patient }: { patient: PatientReco
         </div>
       </div>
 
-      <div className="flex items-center justify-end gap-5 border-t border-line bg-brand-50/40 px-4 py-2.5 text-[13px] font-bold">
-        <button type="button" className="text-brand-700 transition-colors duration-200 hover:text-brand-800">
+      <div className="flex items-center justify-end gap-4 border-t border-line bg-brand-50/40 px-4 py-2.5">
+        <button type="button" className="text-[13px] font-bold text-brand-700 transition-colors duration-200 hover:text-brand-800">
           Check-In
         </button>
-        <button type="button" className="text-brand-700 transition-colors duration-200 hover:text-brand-800">
-          View
+        <button type="button" aria-label="View" title="View" className="text-brand-700 transition-colors duration-200 hover:text-brand-800">
+          <ViewIcon />
         </button>
-        <button type="button" className="text-brand-700 transition-colors duration-200 hover:text-brand-800">
-          Edit
+        <button type="button" aria-label="Edit" title="Edit" className="text-brand-700 transition-colors duration-200 hover:text-brand-800">
+          <EditIcon />
         </button>
       </div>
     </div>
