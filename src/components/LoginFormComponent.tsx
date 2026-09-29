@@ -1,11 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import AuthFieldComponent from "@/components/AuthFieldComponent";
 
 export default function LoginFormComponent() {
+  const router = useRouter();
   const searchParams = useSearchParams();
   const [email, setEmail] = useState(searchParams.get("email") ?? "");
   const [password, setPassword] = useState("");
@@ -15,6 +16,7 @@ export default function LoginFormComponent() {
       className="flex flex-col gap-4"
       onSubmit={(event) => {
         event.preventDefault();
+        router.push("/admin/dashboard");
       }}
     >
       <AuthFieldComponent
