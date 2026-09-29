@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import AppTopBarComponent from "@/components/AppTopBarComponent";
 import AppDrawerComponent from "@/components/AppDrawerComponent";
 import PatientCardComponent from "@/components/PatientCardComponent";
@@ -11,6 +12,9 @@ const toolbarActions = ["Create", "Requests", "Find By...", "Upload", "Actions..
 export default function AppPatientsComponent() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isSearchAcrossFacilities, setIsSearchAcrossFacilities] = useState(false);
+  const [query, setQuery] = useState("");
+
+  const filtered = patientRecords.filter((patient) => patient.name.toLowerCase().includes(query.toLowerCase()));
 
   return (
     <div className="flex h-screen flex-col overflow-hidden bg-brand-50">
@@ -58,8 +62,41 @@ export default function AppPatientsComponent() {
         </button>
       </div>
 
+      <div className="flex shrink-0 items-center gap-3 border-b border-line bg-white px-4 py-3">
+        <Link
+          href="/app/menu"
+          aria-label="Back"
+          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md text-ink-muted transition-colors duration-200 hover:bg-brand-50 hover:text-brand-700"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M19 12H5m0 0 6-6m-6 6 6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </Link>
+
+        <div className="relative flex-1">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden="true"
+            className="pointer-events-none absolute top-1/2 left-3 -translate-y-1/2 text-ink-faint"
+          >
+            <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="1.8" />
+            <path d="m21 21-4.3-4.3" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+          </svg>
+          <input
+            type="text"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder="Search patients"
+            className="w-full rounded-full border border-line bg-ground py-2 pr-4 pl-9 text-sm text-ink placeholder-ink-faint transition-colors duration-200 hover:border-ink-faint focus:outline-2 focus:outline-brand-500"
+          />
+        </div>
+      </div>
+
       <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col items-center gap-6 overflow-y-auto px-4 py-8">
-        <h1 className="text-lg font-bold tracking-wide text-ink uppercase">Recent Patient ({patientRecords.length})</h1>
+        <h1 className="text-lg font-bold tracking-wide text-ink uppercase">Recent Patient ({filtered.length})</h1>
 
         <label className="flex items-center gap-2 text-sm font-semibold text-brand-700">
           <input
@@ -72,9 +109,11 @@ export default function AppPatientsComponent() {
         </label>
 
         <div className="flex w-full flex-col gap-4">
-          {patientRecords.map((patient) => (
+          {filtered.map((patient) => (
             <PatientCardComponent key={patient.patientId} patient={patient} />
           ))}
+
+          {filtered.length === 0 && <p className="py-10 text-center text-sm text-ink-muted">No patients match &quot;{query}&quot;.</p>}
         </div>
       </div>
 
