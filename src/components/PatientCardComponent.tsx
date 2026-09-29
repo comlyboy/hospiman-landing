@@ -59,12 +59,13 @@ function ActionChip({ label }: { label: string }) {
 }
 
 export default function PatientCardComponent({ patient }: { patient: PatientRecord }) {
-  const fields: { icon: React.ReactNode; value: string }[] = [
+  const fields: ({ icon: React.ReactNode; value: string } | undefined)[] = [
     { icon: <PersonIcon />, value: `${patient.dob} · ${patient.age} years` },
     patient.email ? { icon: <MailIcon />, value: patient.email } : undefined,
     patient.phone ? { icon: <PhoneIcon />, value: patient.phone } : undefined,
     patient.address ? { icon: <HomeIcon />, value: patient.address } : undefined,
-  ].filter((field) => field !== undefined);
+  ];
+  const visibleFields = fields.filter((field): field is { icon: React.ReactNode; value: string } => field !== undefined);
 
   return (
     <div className="group rounded-xl border border-line bg-white p-4 transition-all duration-200 hover:border-brand-500/30 hover:shadow-lg hover:shadow-brand-900/10">
@@ -93,7 +94,7 @@ export default function PatientCardComponent({ patient }: { patient: PatientReco
           </div>
 
           <div className="mt-2.5 grid grid-cols-1 gap-x-8 gap-y-1.5 sm:grid-flow-col sm:grid-cols-2 sm:grid-rows-2">
-            {fields.map((field, index) => (
+            {visibleFields.map((field, index) => (
               <FieldRow key={index} icon={field.icon} value={field.value} />
             ))}
           </div>
