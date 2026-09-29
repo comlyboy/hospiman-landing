@@ -49,10 +49,10 @@ function HomeIcon() {
 
 export default function PatientCardComponent({ patient }: { patient: PatientRecord }) {
   return (
-    <div className="overflow-hidden rounded-2xl border border-line bg-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-brand-900/10">
-      <div className="flex flex-col gap-3 p-5">
+    <div className="group overflow-hidden rounded-xl border border-line bg-white transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-500/30 hover:shadow-lg hover:shadow-brand-900/10">
+      <div className="flex flex-col gap-3 p-4">
         <div className="flex items-start gap-3">
-          <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-sm font-bold text-white ${patient.avatarColor}`}>
+          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[9px] bg-brand-50 text-sm font-bold text-brand-700 transition-transform duration-200 group-hover:scale-110">
             {patient.avatarInitials}
           </div>
           <div className="flex-1">
