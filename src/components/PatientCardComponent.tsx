@@ -81,9 +81,11 @@ export default function PatientCardComponent({ patient }: { patient: PatientReco
                 {patient.name.toUpperCase()} [{patient.patientId}]
               </span>
               <span className="rounded-full bg-brand-100 px-2.5 py-0.5 text-[10.5px] font-bold text-brand-700">{patient.gender}</span>
-              {patient.tag && (
-                <span className="rounded-full bg-emerald-50 px-2.5 py-0.5 text-[10.5px] font-bold text-emerald-700">{patient.tag}</span>
-              )}
+              {patient.tags?.map((tag) => (
+                <span key={tag} className="rounded-full bg-emerald-50 px-2.5 py-0.5 text-[10.5px] font-bold text-emerald-700">
+                  {tag}
+                </span>
+              ))}
             </div>
 
             <div className="flex shrink-0 items-center gap-1.5">

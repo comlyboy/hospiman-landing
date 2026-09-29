@@ -10,7 +10,7 @@ export interface PatientRecord {
   phone?: string;
   email?: string;
   address?: string;
-  tag?: string;
+  tags?: string[];
 }
 
 export const patientRecords: PatientRecord[] = [
@@ -50,7 +50,7 @@ export const patientRecords: PatientRecord[] = [
     age: 24,
     gender: "FEMALE",
     address: "5 imagbon street fadeyi bustop yaba",
-    tag: "FAMILY GROUP",
+    tags: ["FAMILY GROUP"],
   },
   {
     patientId: "1002",
@@ -72,6 +72,6 @@ export const patientRecords: PatientRecord[] = [
     email: "genbliz@gmail.com",
     phone: "+2348036355545",
     address: "7, imagbon street, yaba",
-    tag: "HMO",
+    tags: ["HMO", "FAMILY GROUP"],
   },
 ];
