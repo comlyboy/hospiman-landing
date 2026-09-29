@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import type { HospitalEntry } from "@/lib/hospitals-data";
 
@@ -19,25 +22,22 @@ function Field({ label, value }: FieldProps) {
   );
 }
 
-interface ActionItem {
-  label: string;
-  href?: string;
-}
-
 const actionButtonClass =
   "rounded-lg border border-line bg-white px-3.5 py-2 text-sm font-semibold text-ink transition-colors duration-200 hover:border-brand-500 hover:bg-brand-50 hover:text-brand-700";
 
 export default function HospitalCardComponent({ hospital }: HospitalCardComponentProps) {
-  const actions: ActionItem[] = [
-    { label: "Edit" },
-    { label: "Renew License", href: "/admin/hospitals/renew-license" },
-    { label: "Payments", href: "/admin/payments" },
-    { label: "Invoices", href: "/admin/invoices" },
-    { label: "Dashboard", href: "/admin/dashboard" },
-    { label: "Send Sms", href: "/admin/hospitals/send-sms" },
-    { label: "Wallets" },
-    { label: "Show Token" },
-  ];
+  const [isTokenVisible, setIsTokenVisible] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(hospital.clientToken);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    } catch {
+      // Clipboard API unavailable (e.g. insecure context) — fail silently.
+    }
+  };
 
   return (
     <div className="overflow-hidden rounded-2xl border border-line bg-white transition-all duration-300 hover:shadow-lg hover:shadow-brand-900/10">
@@ -64,18 +64,58 @@ export default function HospitalCardComponent({ hospital }: HospitalCardComponen
         <Field label="License Plan" value={hospital.licensePlan} />
       </div>
 
-      <div className="flex flex-wrap gap-2 border-t border-line bg-brand-50/40 p-4">
-        {actions.map((action) =>
-          action.href ? (
-            <Link key={action.label} href={action.href} className={actionButtonClass}>
-              {action.label}
-            </Link>
-          ) : (
-            <button key={action.label} type="button" className={actionButtonClass}>
-              {action.label}
+      {isTokenVisible && (
+        <div className="border-t border-line p-6">
+          <div className="mb-1.5 text-sm font-semibold text-ink">Client token:</div>
+          <div className="flex overflow-hidden rounded-lg border border-line">
+            <input
+              type="text"
+              readOnly
+              value={hospital.clientToken}
+              className="min-w-0 flex-1 truncate bg-ground px-3 py-2 font-mono text-xs text-ink-muted outline-none"
+            />
+            <button
+              type="button"
+              onClick={handleCopy}
+              className="shrink-0 bg-line px-4 py-2 text-sm font-bold text-ink transition-colors duration-200 hover:bg-brand-100"
+            >
+              {copied ? "Copied!" : "Copy"}
             </button>
-          )
-        )}
+          </div>
+          <button
+            type="button"
+            className="mt-2 text-sm font-semibold text-brand-700 transition-colors duration-200 hover:text-brand-800"
+          >
+            reset token
+          </button>
+        </div>
+      )}
+
+      <div className="flex flex-wrap gap-2 border-t border-line bg-brand-50/40 p-4">
+        <button type="button" className={actionButtonClass}>
+          Edit
+        </button>
+        <Link href="/admin/hospitals/renew-license" className={actionButtonClass}>
+          Renew License
+        </Link>
+        <Link href="/admin/payments" className={actionButtonClass}>
+          Payments
+        </Link>
+        <Link href="/admin/invoices" className={actionButtonClass}>
+          Invoices
+        </Link>
+        <Link href="/admin/dashboard" className={actionButtonClass}>
+          Dashboard
+        </Link>
+        <Link href="/admin/hospitals/send-sms" className={actionButtonClass}>
+          Send Sms
+        </Link>
+        <button type="button" className={actionButtonClass}>
+          Wallets
+        </button>
+        <button type="button" onClick={() => setIsTokenVisible((visible) => !visible)} className={actionButtonClass}>
+          {isTokenVisible ? "Hide Token" : "Show Token"}
+        </button>
       </div>
     </div>
   );

@@ -61,6 +61,7 @@ const menuItems: MenuItem[] = [
   },
   {
     label: "My Profile",
+    href: "/admin/profile",
     icon: (
       <svg {...iconProps}>
         <circle cx="12" cy="8" r="3.5" stroke="currentColor" strokeWidth="1.8" />

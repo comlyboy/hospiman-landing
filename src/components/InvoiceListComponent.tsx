@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import RevealComponent from "@/components/RevealComponent";
-import DateRangeFilterComponent from "@/components/DateRangeFilterComponent";
-import ViewModeToggleComponent, { type ViewMode } from "@/components/ViewModeToggleComponent";
+import ListToolbarComponent, { type ViewMode } from "@/components/ListToolbarComponent";
 import { isDateWithinRange } from "@/lib/date-filter";
 import { invoiceEntries, type InvoiceStatus, type InvoiceCategory } from "@/lib/invoices-data";
 
@@ -26,8 +25,8 @@ export default function InvoiceListComponent() {
 
   return (
     <div className="mx-auto flex max-w-4xl flex-col gap-6 p-4">
-      <RevealComponent className="flex flex-wrap items-center justify-between gap-3">
-        <DateRangeFilterComponent
+      <RevealComponent>
+        <ListToolbarComponent
           startDate={startDate}
           endDate={endDate}
           onStartDateChange={setStartDate}
@@ -36,8 +35,9 @@ export default function InvoiceListComponent() {
             setStartDate("");
             setEndDate("");
           }}
+          viewMode={viewMode}
+          onViewModeChange={setViewMode}
         />
-        <ViewModeToggleComponent viewMode={viewMode} onChange={setViewMode} />
       </RevealComponent>
 
       {viewMode === "card" ? (
