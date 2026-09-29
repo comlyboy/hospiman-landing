@@ -77,14 +77,14 @@ export default function ContactPageComponent() {
       <HeaderComponent active="contact" />
 
       <main>
-        <section className="px-6 pt-14 pb-4 md:px-16">
+        <section className="pt-14 pb-4 md:px-16">
           <RevealComponent className="flex flex-col items-center gap-2.5 text-center">
             <span className="text-xs font-bold tracking-wider text-brand-500">GET IN TOUCH</span>
             <h1 className="text-[32px] font-bold tracking-tight">Contact Us</h1>
           </RevealComponent>
         </section>
 
-        <section className="mx-auto flex max-w-5xl flex-col gap-14 px-6 py-16 md:flex-row md:px-16">
+        <section className="mx-auto flex max-w-5xl flex-col gap-14 py-16 md:flex-row md:px-16">
           <RevealComponent className="flex shrink-0 flex-col gap-5 md:w-85">
             {contactDetails.map((detail) => (
               <div key={detail.label} className="group flex items-center gap-3.5">
@@ -194,7 +194,7 @@ export default function ContactPageComponent() {
 
             <button
               type="submit"
-              className="rounded-[9px] bg-brand-700 py-3.5 text-[15px] font-bold text-white transition-all duration-200 hover:bg-brand-800 active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
+              className="rounded-[9px] bg-brand-500 py-3.5 text-[15px] font-bold text-white transition-all duration-200 hover:bg-brand-600 active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-700"
             >
               SEND MESSAGE
             </button>

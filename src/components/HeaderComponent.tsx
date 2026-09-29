@@ -26,7 +26,7 @@ export default function HeaderComponent({ active }: HeaderComponentProps) {
     <header>
       <a
         href={siteConfig.phoneHref}
-        className="flex h-9 items-center justify-center gap-2 bg-brand-700 px-6 text-center transition-colors duration-200 hover:bg-brand-800"
+        className="flex h-9 items-center justify-center gap-2 bg-brand-500 text-center transition-colors duration-200 hover:bg-brand-600 md:px-6"
       >
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path
@@ -41,7 +41,7 @@ export default function HeaderComponent({ active }: HeaderComponentProps) {
         </span>
       </a>
 
-      <div className="flex h-22 items-center justify-between border-b border-line bg-white px-6 md:px-16">
+      <div className="flex h-22 items-center justify-between border-b border-line bg-white md:px-16">
         <Link href="/" className="flex items-center transition-opacity duration-200 hover:opacity-80">
           <Image
             src="/hospiman-logo.png"
@@ -78,7 +78,7 @@ export default function HeaderComponent({ active }: HeaderComponentProps) {
           </a>
           <a
             href={siteConfig.links.createAccount}
-            className="rounded-lg bg-brand-700 px-5 py-2.5 text-sm font-bold text-white transition-all duration-200 hover:bg-brand-800 active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
+            className="rounded-lg bg-brand-500 px-5 py-2.5 text-sm font-bold text-white transition-all duration-200 hover:bg-brand-600 active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-700"
           >
             Create Account
           </a>
@@ -117,7 +117,7 @@ export default function HeaderComponent({ active }: HeaderComponentProps) {
             </a>
             <a
               href={siteConfig.links.createAccount}
-              className="mt-1 rounded-lg bg-brand-700 px-3 py-2.5 text-center text-sm font-bold text-white transition-all duration-200 hover:bg-brand-800 active:scale-95"
+              className="mt-1 rounded-lg bg-brand-500 px-3 py-2.5 text-center text-sm font-bold text-white transition-all duration-200 hover:bg-brand-600 active:scale-95"
             >
               Create Account
             </a>

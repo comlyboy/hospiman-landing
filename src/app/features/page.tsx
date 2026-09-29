@@ -20,7 +20,7 @@ export default function FeaturesPageComponent() {
       <HeaderComponent active="features" />
 
       <main>
-        <section className="px-6 pt-14 pb-4 md:px-16">
+        <section className="pt-14 pb-4 md:px-16">
           <RevealComponent className="flex flex-col items-center gap-3 text-center">
             <span className="text-xs font-bold tracking-wider text-brand-500">FEATURES</span>
             <h1 className="text-[34px] font-bold tracking-tight">
@@ -32,7 +32,7 @@ export default function FeaturesPageComponent() {
           </RevealComponent>
         </section>
 
-        <section className="mx-auto flex max-w-6xl flex-col gap-7 px-6 py-20 md:px-16">
+        <section className="mx-auto flex max-w-6xl flex-col gap-7 py-20 md:px-16">
           {moduleCategories.map((category, categoryIndex) => (
             <RevealComponent key={category.name} delayMs={categoryIndex * 60} className="flex flex-col gap-3">
               <h2 className="text-[13px] font-bold tracking-wider text-brand-500 uppercase">
@@ -63,7 +63,7 @@ export default function FeaturesPageComponent() {
           </RevealComponent>
         </section>
 
-        <section className="bg-brand-900 px-6 py-20 md:px-16">
+        <section className="bg-brand-900 py-20 md:px-16">
           <RevealComponent className="flex flex-col items-center gap-6 text-center">
             <h2 className="text-[32px] leading-snug font-bold text-white">
               Be productive. Be more efficient.

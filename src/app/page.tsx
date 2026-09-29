@@ -31,7 +31,7 @@ export default function HomePageComponent() {
           <HeroComponent />
         </Suspense>
 
-        <section className="flex flex-col gap-11 px-6 py-24 md:px-16">
+        <section className="flex flex-col gap-11 py-24 md:px-16">
           <RevealComponent className="mx-auto flex max-w-2xl flex-col items-center gap-3.5 text-center">
             <span className="text-xs font-bold tracking-wider text-brand-500">MODULES</span>
             <h2 className="text-[34px] font-bold tracking-tight">One system, every department.</h2>
@@ -79,7 +79,7 @@ export default function HomePageComponent() {
           </RevealComponent>
         </section>
 
-        <section className="bg-brand-900 px-6 py-20 md:px-16">
+        <section className="bg-brand-900 py-20 md:px-16">
           <RevealComponent className="flex flex-col items-center gap-6 text-center">
             <h2 className="text-[32px] leading-snug font-bold text-white">
               Be productive. Be more efficient.

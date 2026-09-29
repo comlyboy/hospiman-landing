@@ -12,7 +12,7 @@ const heroChips = [
 
 export default function HeroClassicComponent() {
   return (
-    <section className="bg-brand-900 px-6 py-20 md:px-16">
+    <section className="bg-brand-900 py-20 md:px-16">
       <RevealComponent className="flex flex-col items-center gap-6 text-center">
         <span className="rounded-full border border-white/25 px-4 py-1.5 text-xs font-semibold tracking-wider text-white/85">
           NIGERIA&apos;S HOSPITAL &amp; EMR PLATFORM

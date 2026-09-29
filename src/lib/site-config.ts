@@ -73,8 +73,8 @@ export const siteConfig: SiteConfig = {
     instagram: "https://instagram.com/hospimanhq",
   },
   links: {
-    login: "https://admin.hospiman.com/login",
-    createAccount: "https://admin.hospiman.com/register",
+    login: "/admin/login",
+    createAccount: "/admin/register",
     openApp: "https://app.hospiman.com",
   },
 };

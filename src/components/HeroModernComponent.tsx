@@ -13,7 +13,7 @@ const heroChips = [
 
 export default function HeroModernComponent() {
   return (
-    <section className="relative overflow-hidden bg-brand-900 px-6 py-20 md:px-16 lg:py-28">
+    <section className="relative overflow-hidden bg-brand-900 py-20 md:px-16 lg:py-28">
       <div
         aria-hidden
         className="pointer-events-none absolute -top-40 -right-32 h-105 w-105 rounded-full bg-brand-500/35 blur-3xl"

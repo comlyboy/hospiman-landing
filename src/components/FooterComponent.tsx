@@ -16,7 +16,7 @@ const socialLinks: SocialLink[] = [
 
 export default function FooterComponent() {
   return (
-    <footer className="bg-brand-900 px-6 pt-14 pb-8 md:px-16">
+    <footer className="bg-brand-900 pt-14 pb-8 md:px-16">
       <div className="mx-auto flex max-w-6xl flex-col gap-10 md:flex-row md:justify-between">
         <div className="flex max-w-xs flex-col gap-3.5">
           <div className="flex items-center gap-2.5 transition-opacity duration-200 hover:opacity-80">
