@@ -47,7 +47,7 @@ export default function AdminTopBarComponent({ hospitalName, onOpenSidebar }: Ad
             type="button"
             aria-label="Open menu"
             onClick={onOpenSidebar}
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md transition-colors duration-200 hover:bg-white/10 md:hidden"
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md transition-colors duration-200 hover:bg-white/10 md:invisible"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M4 7h16M4 12h16M4 17h16" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" />
