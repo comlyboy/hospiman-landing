@@ -59,6 +59,13 @@ function ActionChip({ label }: { label: string }) {
 }
 
 export default function PatientCardComponent({ patient }: { patient: PatientRecord }) {
+  const fields: { icon: React.ReactNode; value: string }[] = [
+    { icon: <PersonIcon />, value: `${patient.dob} · ${patient.age} years` },
+    patient.email ? { icon: <MailIcon />, value: patient.email } : undefined,
+    patient.phone ? { icon: <PhoneIcon />, value: patient.phone } : undefined,
+    patient.address ? { icon: <HomeIcon />, value: patient.address } : undefined,
+  ].filter((field) => field !== undefined);
+
   return (
     <div className="group rounded-xl border border-line bg-white p-4 transition-all duration-200 hover:border-brand-500/30 hover:shadow-lg hover:shadow-brand-900/10">
       <div className="flex items-start gap-3.5">
@@ -73,6 +80,9 @@ export default function PatientCardComponent({ patient }: { patient: PatientReco
                 {patient.name.toUpperCase()} [{patient.patientId}]
               </span>
               <span className="rounded-full bg-brand-100 px-2.5 py-0.5 text-[10.5px] font-bold text-brand-700">{patient.gender}</span>
+              {patient.tag && (
+                <span className="rounded-full bg-emerald-50 px-2.5 py-0.5 text-[10.5px] font-bold text-emerald-700">{patient.tag}</span>
+              )}
             </div>
 
             <div className="flex shrink-0 items-center gap-1.5">
@@ -82,15 +92,10 @@ export default function PatientCardComponent({ patient }: { patient: PatientReco
             </div>
           </div>
 
-          <div className="mt-2.5 grid grid-cols-1 gap-x-8 gap-y-1.5 sm:grid-cols-2">
-            <div className="flex flex-col gap-1.5">
-              <FieldRow icon={<PersonIcon />} value={`${patient.dob} · ${patient.age} years`} />
-              {patient.email && <FieldRow icon={<MailIcon />} value={patient.email} />}
-            </div>
-            <div className="flex flex-col gap-1.5">
-              {patient.phone && <FieldRow icon={<PhoneIcon />} value={patient.phone} />}
-              {patient.address && <FieldRow icon={<HomeIcon />} value={patient.address} />}
-            </div>
+          <div className="mt-2.5 grid grid-cols-1 gap-x-8 gap-y-1.5 sm:grid-flow-col sm:grid-cols-2 sm:grid-rows-2">
+            {fields.map((field, index) => (
+              <FieldRow key={index} icon={field.icon} value={field.value} />
+            ))}
           </div>
         </div>
       </div>
