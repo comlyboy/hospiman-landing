@@ -1,28 +1,42 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import AuthFieldComponent from "@/components/AuthFieldComponent";
 
 export default function AppLoginFormComponent() {
-  const router = useRouter();
   const [emailOrUsername, setEmailOrUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [shortCode, setShortCode] = useState("");
+  const [organizationCode, setOrganizationCode] = useState("");
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  if (isSubmitted) {
+    return (
+      <div className="flex flex-col items-center gap-2 py-4 text-center">
+        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-50">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M5 13l4 4L19 7" stroke="var(--color-brand-500)" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </div>
+        <p className="text-sm font-semibold text-ink">Logged in (demo simulation)</p>
+        <p className="text-xs text-ink-muted">The real app has no backend connected here.</p>
+      </div>
+    );
+  }
 
   return (
     <form
       className="flex flex-col gap-4"
       onSubmit={(event) => {
         event.preventDefault();
-        router.push("/app");
+        setIsSubmitted(true);
       }}
     >
       <AuthFieldComponent
         id="app-login-identifier"
-        label="Email or UserName"
+        label={isAdmin ? "Email" : "Email or UserName"}
+        type={isAdmin ? "email" : "text"}
         required
         placeholder="you@hospital.com"
         value={emailOrUsername}
@@ -76,32 +90,34 @@ export default function AppLoginFormComponent() {
         </div>
       </div>
 
-      <AuthFieldComponent
-        id="app-login-short-code"
-        label="Short Code"
-        required
-        placeholder="Enter Short Code"
-        value={shortCode}
-        onChange={(event) => setShortCode(event.target.value)}
-      />
+      {!isAdmin && (
+        <AuthFieldComponent
+          id="app-login-organization-code"
+          label="Organization Code"
+          required
+          inputMode="numeric"
+          pattern="[0-9]{4}"
+          maxLength={4}
+          placeholder="Enter Organization Code"
+          value={organizationCode}
+          onChange={(event) => setOrganizationCode(event.target.value.replace(/\D/g, "").slice(0, 4))}
+        />
+      )}
 
       <label className="flex items-center gap-2.5 text-sm text-ink">
         <input
           type="checkbox"
           checked={isAdmin}
           onChange={(event) => setIsAdmin(event.target.checked)}
-          className="h-4 w-4 rounded border-line text-brand-500 focus:ring-brand-500"
+          className="h-4 w-4 accent-brand-500"
         />
         I am an Admin
       </label>
 
       <button
         type="submit"
-        className="mt-1 flex items-center justify-center gap-2 rounded-[9px] bg-brand-500 py-3.5 text-[15px] font-bold text-white transition-all duration-200 hover:bg-brand-600 active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-700"
+        className="mt-1 rounded-[9px] bg-brand-500 py-3.5 text-[15px] font-bold text-white transition-all duration-200 hover:bg-brand-600 active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-700"
       >
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M5 13l4 4L19 7" stroke="#ffffff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
         Login
       </button>
     </form>

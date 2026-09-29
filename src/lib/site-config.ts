@@ -31,7 +31,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://hospiman.netlify.ap
 
 export const siteConfig: SiteConfig = {
   name: "Hospiman",
-  legalName: "Hospiman Solutions",
+  legalName: "Hospiman Technologies Limited",
   tagline: "Top Hospital Management Information System, Medical Practice, and EMR Platform",
   description:
     "Efficient, easy to use, cost-effective hospital, clinic and EMR management platform that lets you focus on what matters to you.",
