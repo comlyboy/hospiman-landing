@@ -2,30 +2,23 @@
 
 import { useState, type ReactNode } from "react";
 import Link from "next/link";
+import ModuleRowComponent from "@/components/ModuleRowComponent";
 
 interface MenuTile {
   label: string;
   icon: ReactNode;
-  tint: { bg: string; text: string };
 }
 
 function TileIcon({ d, circles }: { d: string; circles?: { cx: number; cy: number; r: number }[] }) {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d={d} stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d={d} stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
       {circles?.map((c, index) => (
         <circle key={index} cx={c.cx} cy={c.cy} r={c.r} fill="currentColor" />
       ))}
     </svg>
   );
 }
-
-const tints = [
-  { bg: "bg-brand-50", text: "text-brand-700" },
-  { bg: "bg-sky-50", text: "text-sky-700" },
-  { bg: "bg-emerald-50", text: "text-emerald-700" },
-  { bg: "bg-amber-50", text: "text-amber-700" },
-];
 
 const menuTiles: MenuTile[] = [
   { label: "Dashboard", icon: <TileIcon d="M4 19h16M6 19V9m6 10V5m6 14v-7" /> },
@@ -63,7 +56,7 @@ const menuTiles: MenuTile[] = [
   { label: "Guest Log", icon: <TileIcon d="M7 3h8l4 4v14a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Zm8 0v4h4M9 13h6m-6 4h6" /> },
   { label: "Pricing", icon: <TileIcon d="m20 9-9-9H4v7l9 9 7-7Z" circles={[{ cx: 8.5, cy: 4.5, r: 1.4 }]} /> },
   { label: "Wallet", icon: <TileIcon d="M3 7h18v12H3V7Zm0 0 2-3h14l2 3M16 13a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z" /> },
-].map((tile, index) => ({ ...tile, tint: tints[index % tints.length] }));
+];
 
 export default function AppMenuComponent() {
   const [query, setQuery] = useState("");
@@ -128,15 +121,9 @@ export default function AppMenuComponent() {
           className="w-full max-w-3xl rounded-full border border-line bg-white px-5 py-3 text-sm text-ink placeholder-ink-faint transition-colors duration-200 hover:border-ink-faint focus:outline-2 focus:outline-brand-500"
         />
 
-        <div className="grid w-full max-w-5xl grid-cols-2 gap-3.5 sm:grid-cols-3 lg:grid-cols-4">
+        <div className="grid w-full max-w-5xl grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((tile) => (
-            <div
-              key={tile.label}
-              className="flex min-h-28 flex-col justify-between gap-3 rounded-2xl border border-line bg-white p-4 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-brand-900/10"
-            >
-              <div className={`flex h-11 w-11 items-center justify-center rounded-xl ${tile.tint.bg} ${tile.tint.text}`}>{tile.icon}</div>
-              <span className="text-[13.5px] leading-tight font-bold text-ink">{tile.label}</span>
-            </div>
+            <ModuleRowComponent key={tile.label} icon={tile.icon} title={tile.label} />
           ))}
 
           {filtered.length === 0 && (
