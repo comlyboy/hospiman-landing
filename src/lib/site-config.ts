@@ -75,6 +75,6 @@ export const siteConfig: SiteConfig = {
   links: {
     login: "/admin/login",
     createAccount: "/admin/register",
-    openApp: "https://app.hospiman.com",
+    openApp: "/app",
   },
 };
