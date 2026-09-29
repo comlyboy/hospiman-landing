@@ -32,7 +32,7 @@ export default function AppAboutComponent() {
         <div className="flex h-26 w-26 items-center justify-center rounded-2xl bg-brand-500 shadow-[0_10px_30px_rgba(137,98,189,0.35)]">
           <Image src="/icons/icon-192.png" alt="" width={104} height={104} className="rounded-2xl" />
         </div>
-        <span className="font-display text-3xl font-extrabold tracking-tight text-brand-100">HOSPIMAN</span>
+        <span className="font-display text-3xl font-extrabold tracking-tight text-brand-500/15">HOSPIMAN</span>
         <p className="text-base font-bold text-ink">An application for hospital management</p>
         <p className="text-base font-bold text-ink">© {siteConfig.legalName}</p>
       </div>
