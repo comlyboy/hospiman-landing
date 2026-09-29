@@ -15,20 +15,18 @@ export default function SmsHistoryListComponent() {
   const filtered = smsHistoryEntries.filter((entry) => isDateWithinRange(entry.date, startDate, endDate));
 
   return (
-    <div className="mx-auto flex max-w-4xl flex-col gap-6 px-6 py-8">
-      <RevealComponent className="flex flex-col gap-4 sm:flex-row sm:items-end">
-        <div className="flex-1">
-          <DateRangeFilterComponent
-            startDate={startDate}
-            endDate={endDate}
-            onStartDateChange={setStartDate}
-            onEndDateChange={setEndDate}
-            onClear={() => {
-              setStartDate("");
-              setEndDate("");
-            }}
-          />
-        </div>
+    <div className="mx-auto flex max-w-4xl flex-col gap-6 p-4">
+      <RevealComponent className="flex flex-wrap items-center justify-between gap-3">
+        <DateRangeFilterComponent
+          startDate={startDate}
+          endDate={endDate}
+          onStartDateChange={setStartDate}
+          onEndDateChange={setEndDate}
+          onClear={() => {
+            setStartDate("");
+            setEndDate("");
+          }}
+        />
         <ViewModeToggleComponent viewMode={viewMode} onChange={setViewMode} />
       </RevealComponent>
 
