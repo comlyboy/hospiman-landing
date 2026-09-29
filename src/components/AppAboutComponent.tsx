@@ -8,7 +8,7 @@ const stethoscopePattern =
 export default function AppAboutComponent() {
   return (
     <div className="relative flex min-h-screen flex-col overflow-hidden bg-brand-50">
-      <div className="flex h-18 shrink-0 items-center justify-between bg-brand-500 px-4">
+      <div className="flex h-14 shrink-0 items-center justify-between bg-brand-500 px-4">
         <Link
           href="/app"
           aria-label="Back"

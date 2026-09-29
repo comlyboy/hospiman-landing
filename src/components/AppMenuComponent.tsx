@@ -6,25 +6,25 @@ import Link from "next/link";
 interface MenuTile {
   label: string;
   icon: ReactNode;
-  gradient: string;
+  tint: { bg: string; text: string };
 }
 
 function TileIcon({ d, circles }: { d: string; circles?: { cx: number; cy: number; r: number }[] }) {
   return (
-    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d={d} stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d={d} stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
       {circles?.map((c, index) => (
-        <circle key={index} cx={c.cx} cy={c.cy} r={c.r} fill="#ffffff" />
+        <circle key={index} cx={c.cx} cy={c.cy} r={c.r} fill="currentColor" />
       ))}
     </svg>
   );
 }
 
-const gradients = [
-  "from-indigo-500 to-brand-700",
-  "from-teal-500 to-brand-800",
-  "from-sky-500 to-indigo-700",
-  "from-slate-600 to-slate-800",
+const tints = [
+  { bg: "bg-brand-50", text: "text-brand-700" },
+  { bg: "bg-sky-50", text: "text-sky-700" },
+  { bg: "bg-emerald-50", text: "text-emerald-700" },
+  { bg: "bg-amber-50", text: "text-amber-700" },
 ];
 
 const menuTiles: MenuTile[] = [
@@ -63,7 +63,7 @@ const menuTiles: MenuTile[] = [
   { label: "Guest Log", icon: <TileIcon d="M7 3h8l4 4v14a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Zm8 0v4h4M9 13h6m-6 4h6" /> },
   { label: "Pricing", icon: <TileIcon d="m20 9-9-9H4v7l9 9 7-7Z" circles={[{ cx: 8.5, cy: 4.5, r: 1.4 }]} /> },
   { label: "Wallet", icon: <TileIcon d="M3 7h18v12H3V7Zm0 0 2-3h14l2 3M16 13a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z" /> },
-].map((tile, index) => ({ ...tile, gradient: gradients[index % gradients.length] }));
+].map((tile, index) => ({ ...tile, tint: tints[index % tints.length] }));
 
 export default function AppMenuComponent() {
   const [query, setQuery] = useState("");
@@ -72,7 +72,7 @@ export default function AppMenuComponent() {
 
   return (
     <div className="flex min-h-screen flex-col bg-brand-50">
-      <div className="flex h-18 shrink-0 items-center justify-between bg-brand-500 px-4">
+      <div className="flex h-14 shrink-0 items-center justify-between bg-brand-500 px-4">
         <Link
           href="/app"
           aria-label="Back"
@@ -132,10 +132,10 @@ export default function AppMenuComponent() {
           {filtered.map((tile) => (
             <div
               key={tile.label}
-              className={`flex min-h-28 flex-col justify-between rounded-2xl bg-gradient-to-br ${tile.gradient} p-4 shadow-[0_8px_20px_rgba(0,0,0,0.2)] transition-transform duration-200 hover:-translate-y-0.5`}
+              className="flex min-h-28 flex-col justify-between gap-3 rounded-2xl border border-line bg-white p-4 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-brand-900/10"
             >
-              <span className="text-[13.5px] leading-tight font-bold tracking-wide text-white uppercase">{tile.label}</span>
-              <div className="self-end">{tile.icon}</div>
+              <div className={`flex h-11 w-11 items-center justify-center rounded-xl ${tile.tint.bg} ${tile.tint.text}`}>{tile.icon}</div>
+              <span className="text-[13.5px] leading-tight font-bold text-ink">{tile.label}</span>
             </div>
           ))}
 
