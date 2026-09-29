@@ -78,21 +78,48 @@ function EditIcon() {
 
 export default function PatientCardComponent({ patient }: { patient: PatientRecord }) {
   return (
-    <div className="group overflow-hidden rounded-xl border border-line bg-white transition-all duration-200 hover:border-brand-500/30 hover:shadow-lg hover:shadow-brand-900/10">
-      <div className="flex items-start gap-3.5 p-4">
+    <div className="group rounded-xl border border-line bg-white p-4 transition-all duration-200 hover:border-brand-500/30 hover:shadow-lg hover:shadow-brand-900/10">
+      <div className="flex items-start gap-3.5">
         <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[9px] bg-brand-50 text-sm font-bold text-brand-700 transition-transform duration-200 group-hover:scale-110">
           {patient.avatarInitials}
         </div>
 
         <div className="min-w-0 flex-1">
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="text-[14.5px] font-bold text-brand-700">
-              {patient.name.toUpperCase()} [{patient.patientId}]
-            </span>
-            <span className="rounded-full bg-brand-100 px-2.5 py-0.5 text-[10.5px] font-bold text-brand-700">{patient.gender}</span>
+          <div className="flex flex-wrap items-start justify-between gap-2">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="text-[14.5px] font-bold text-brand-700">
+                {patient.name.toUpperCase()} [{patient.patientId}]
+              </span>
+              <span className="rounded-full bg-brand-100 px-2.5 py-0.5 text-[10.5px] font-bold text-brand-700">{patient.gender}</span>
+            </div>
+
+            <div className="flex shrink-0 items-center gap-1">
+              <button
+                type="button"
+                className="rounded-full border border-brand-100 px-3 py-1 text-[11.5px] font-bold text-brand-700 transition-colors duration-200 hover:border-brand-300 hover:bg-brand-50"
+              >
+                Check-In
+              </button>
+              <button
+                type="button"
+                aria-label="View"
+                title="View"
+                className="flex h-7 w-7 items-center justify-center rounded-full text-ink-faint transition-colors duration-200 hover:bg-brand-50 hover:text-brand-700"
+              >
+                <ViewIcon />
+              </button>
+              <button
+                type="button"
+                aria-label="Edit"
+                title="Edit"
+                className="flex h-7 w-7 items-center justify-center rounded-full text-ink-faint transition-colors duration-200 hover:bg-brand-50 hover:text-brand-700"
+              >
+                <EditIcon />
+              </button>
+            </div>
           </div>
 
-          <div className="mt-2 grid grid-cols-1 gap-x-8 gap-y-1.5 sm:grid-cols-2">
+          <div className="mt-2.5 grid grid-cols-1 gap-x-8 gap-y-1.5 sm:grid-cols-2">
             <div className="flex flex-col gap-1.5">
               <FieldRow icon={<PersonIcon />} value={`${patient.dob} · ${patient.age} years`} />
               {patient.email && <FieldRow icon={<MailIcon />} value={patient.email} />}
@@ -103,18 +130,6 @@ export default function PatientCardComponent({ patient }: { patient: PatientReco
             </div>
           </div>
         </div>
-      </div>
-
-      <div className="flex items-center justify-end gap-4 border-t border-line bg-brand-50/40 px-4 py-2.5">
-        <button type="button" className="text-[13px] font-bold text-brand-700 transition-colors duration-200 hover:text-brand-800">
-          Check-In
-        </button>
-        <button type="button" aria-label="View" title="View" className="text-brand-700 transition-colors duration-200 hover:text-brand-800">
-          <ViewIcon />
-        </button>
-        <button type="button" aria-label="Edit" title="Edit" className="text-brand-700 transition-colors duration-200 hover:text-brand-800">
-          <EditIcon />
-        </button>
       </div>
     </div>
   );
