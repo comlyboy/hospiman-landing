@@ -13,7 +13,11 @@ export const metadata: Metadata = {
 
 export default function AdminLoginPageComponent() {
   return (
-    <AuthLayoutComponent eyebrow="WELCOME BACK" title="Login to Hospiman">
+    <AuthLayoutComponent
+      eyebrow="WELCOME BACK"
+      title="Login to Hospiman"
+      subtitle="This is a demo: enter any email and password to continue."
+    >
       <Suspense fallback={<AuthFormSkeletonComponent fieldCount={2} />}>
         <LoginFormComponent />
       </Suspense>
