@@ -7,21 +7,19 @@ const stethoscopePattern =
 
 export default function AppAboutComponent() {
   return (
-    <div className="relative flex min-h-screen flex-col overflow-hidden bg-white">
-      <div className="flex h-16 shrink-0 items-center bg-brand-500">
-        <span className="flex-1 text-center text-sm font-bold tracking-[0.2em] text-white/75 uppercase">About</span>
-      </div>
-
-      <div className="relative z-10 flex h-14 shrink-0 items-center bg-zinc-900 px-3 shadow-[0_6px_16px_rgba(0,0,0,0.25)]">
+    <div className="relative flex min-h-screen flex-col overflow-hidden bg-brand-50">
+      <div className="flex h-18 shrink-0 items-center justify-between bg-brand-500 px-4">
         <Link
           href="/app"
           aria-label="Back"
-          className="flex h-9 w-9 items-center justify-center rounded-md transition-colors duration-200 hover:bg-white/10"
+          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md transition-colors duration-200 hover:bg-white/10"
         >
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M19 12H5m0 0 6-6m-6 6 6 6" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </Link>
+        <span className="text-sm font-bold tracking-[0.2em] text-white/85 uppercase">About</span>
+        <span className="w-9 shrink-0" aria-hidden />
       </div>
 
       <div

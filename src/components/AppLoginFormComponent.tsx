@@ -1,36 +1,23 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import AuthFieldComponent from "@/components/AuthFieldComponent";
 
 export default function AppLoginFormComponent() {
+  const router = useRouter();
   const [emailOrUsername, setEmailOrUsername] = useState("");
   const [password, setPassword] = useState("");
   const [organizationCode, setOrganizationCode] = useState("");
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  if (isSubmitted) {
-    return (
-      <div className="flex flex-col items-center gap-2 py-4 text-center">
-        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-50">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M5 13l4 4L19 7" stroke="var(--color-brand-500)" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </div>
-        <p className="text-sm font-semibold text-ink">Logged in (demo simulation)</p>
-        <p className="text-xs text-ink-muted">The real app has no backend connected here.</p>
-      </div>
-    );
-  }
 
   return (
     <form
       className="flex flex-col gap-4"
       onSubmit={(event) => {
         event.preventDefault();
-        setIsSubmitted(true);
+        router.push("/app/menu");
       }}
     >
       <AuthFieldComponent
