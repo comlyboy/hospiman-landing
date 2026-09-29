@@ -2,12 +2,16 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { siteConfig } from "@/lib/site-config";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 
 export default function WhatsAppWidgetComponent() {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState("");
+
+  if (pathname.startsWith("/app") || pathname.startsWith("/admin")) return null;
 
   const handleSend = () => {
     const trimmed = message.trim();

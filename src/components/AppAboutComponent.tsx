@@ -34,7 +34,12 @@ export default function AppAboutComponent() {
         </div>
         <span className="font-display text-3xl font-extrabold tracking-tight text-brand-500/15">HOSPIMAN</span>
         <p className="text-base font-bold text-ink">An application for hospital management</p>
-        <p className="text-base font-bold text-ink">© {siteConfig.legalName}</p>
+        <p className="text-base font-bold text-ink">
+          ©{" "}
+          <Link href="/" className="hover:text-brand-700 hover:underline">
+            {siteConfig.legalName}
+          </Link>
+        </p>
       </div>
     </div>
   );

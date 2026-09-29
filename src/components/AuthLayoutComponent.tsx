@@ -8,18 +8,10 @@ interface AuthLayoutComponentProps {
   title: string;
   subtitle?: string;
   children: ReactNode;
-  sideLink?: { label: string; href: string };
   logoHref?: string;
 }
 
-export default function AuthLayoutComponent({
-  eyebrow,
-  title,
-  subtitle,
-  children,
-  sideLink,
-  logoHref = "/",
-}: AuthLayoutComponentProps) {
+export default function AuthLayoutComponent({ eyebrow, title, subtitle, children, logoHref = "/" }: AuthLayoutComponentProps) {
   return (
     <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-brand-50 px-6 py-12">
       <div
@@ -30,15 +22,6 @@ export default function AuthLayoutComponent({
         aria-hidden
         className="pointer-events-none absolute -right-28 -bottom-32 h-96 w-96 rounded-full bg-brand-700/20 blur-3xl"
       />
-
-      {sideLink && (
-        <Link
-          href={sideLink.href}
-          className="absolute top-6 left-6 text-sm font-semibold text-brand-700 transition-colors duration-200 hover:text-brand-800"
-        >
-          {sideLink.label}
-        </Link>
-      )}
 
       <Link href={logoHref} className="relative mb-8 flex items-center transition-opacity duration-200 hover:opacity-80">
         <Image src="/hospiman-logo.png" alt={siteConfig.name} width={900} height={200} style={{ height: 36, width: "auto" }} priority />
@@ -54,8 +37,21 @@ export default function AuthLayoutComponent({
         {children}
       </div>
 
+      {sideLink && (
+        <Link
+          href={sideLink.href}
+          className="relative mt-6 text-sm font-semibold text-brand-700 transition-colors duration-200 hover:text-brand-800"
+        >
+          {sideLink.label}
+        </Link>
+      )}
+
       <p className="relative mt-8 text-xs text-ink-faint">
-        © {new Date().getFullYear()} {siteConfig.legalName}. All Rights Reserved.
+        © {new Date().getFullYear()}{" "}
+        <Link href="/" className="hover:text-ink-muted hover:underline">
+          {siteConfig.legalName}
+        </Link>
+        . All Rights Reserved.
       </p>
     </div>
   );
