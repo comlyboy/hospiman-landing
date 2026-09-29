@@ -1,59 +1,35 @@
 "use client";
 
 import { useState } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
+import Image from "next/image";
+import Link from "next/link";
 import HospitalSwitcherModalComponent from "@/components/HospitalSwitcherModalComponent";
 import AdminUserMenuComponent from "@/components/AdminUserMenuComponent";
 
 interface AdminTopBarComponentProps {
   hospitalName: string;
-  onOpenSidebar: () => void;
 }
 
-interface PageConfig {
-  title: string;
-  leftAction?: "menu" | "back";
-}
-
-const pageConfig: Record<string, PageConfig> = {
-  "/admin/dashboard": { title: "Dashboard" },
-  "/admin/invoices": { title: "Invoices", leftAction: "back" },
-  "/admin/sms-history": { title: "SMS Sent History", leftAction: "back" },
+const pageTitles: Record<string, string> = {
+  "/admin/dashboard": "Dashboard",
+  "/admin/invoices": "Invoices",
+  "/admin/sms-history": "SMS Sent History",
 };
 
-export default function AdminTopBarComponent({ hospitalName, onOpenSidebar }: AdminTopBarComponentProps) {
+export default function AdminTopBarComponent({ hospitalName }: AdminTopBarComponentProps) {
   const pathname = usePathname();
-  const router = useRouter();
-  const { title, leftAction = "menu" } = pageConfig[pathname] ?? { title: "Hospiman" };
+  const title = pageTitles[pathname] ?? "Hospiman";
 
   const [isSwitcherOpen, setIsSwitcherOpen] = useState(false);
 
   return (
     <>
-      <div className="flex h-18 items-center justify-between bg-brand-500 px-3">
-        {leftAction === "back" ? (
-          <button
-            type="button"
-            aria-label="Go back"
-            onClick={() => router.push("/admin/dashboard")}
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md transition-colors duration-200 hover:bg-white/10"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M15 19 8 12l7-7" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </button>
-        ) : (
-          <button
-            type="button"
-            aria-label="Open menu"
-            onClick={onOpenSidebar}
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md transition-colors duration-200 hover:bg-white/10 md:invisible"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M4 7h16M4 12h16M4 17h16" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" />
-            </svg>
-          </button>
-        )}
+      <div className="flex h-18 items-center justify-between bg-brand-500 px-4">
+        <Link href="/admin/dashboard" className="flex shrink-0 items-center gap-2 transition-opacity duration-200 hover:opacity-80">
+          <Image src="/hospiman-mark.png" alt="" width={30} height={30} className="rounded-md" />
+          <span className="hidden font-display text-base font-bold text-white sm:inline">Hospiman</span>
+        </Link>
 
         <button
           type="button"
