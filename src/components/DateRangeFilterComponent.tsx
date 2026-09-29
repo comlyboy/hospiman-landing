@@ -6,6 +6,9 @@ interface DateRangeFilterComponentProps {
   onClear: () => void;
 }
 
+const dateInputClass =
+  "w-28 border-none bg-transparent text-sm text-ink-muted outline-none [&::-webkit-calendar-picker-indicator]:cursor-pointer [&::-webkit-calendar-picker-indicator]:opacity-50 [&::-webkit-calendar-picker-indicator]:transition-opacity [&::-webkit-calendar-picker-indicator]:hover:opacity-100";
+
 export default function DateRangeFilterComponent({
   startDate,
   endDate,
@@ -17,27 +20,25 @@ export default function DateRangeFilterComponent({
 
   return (
     <div className="flex flex-wrap items-center gap-2">
-      <label htmlFor="filter-start-date" className="sr-only">
-        Start date
-      </label>
-      <input
-        id="filter-start-date"
-        type="date"
-        value={startDate}
-        onChange={(event) => onStartDateChange(event.target.value)}
-        className="h-9 rounded-lg border border-line px-2.5 text-sm text-ink-muted transition-colors duration-200 hover:border-ink-faint focus:text-ink focus:outline-2 focus:outline-brand-500"
-      />
-      <span className="text-sm text-ink-faint">–</span>
-      <label htmlFor="filter-end-date" className="sr-only">
-        End date
-      </label>
-      <input
-        id="filter-end-date"
-        type="date"
-        value={endDate}
-        onChange={(event) => onEndDateChange(event.target.value)}
-        className="h-9 rounded-lg border border-line px-2.5 text-sm text-ink-muted transition-colors duration-200 hover:border-ink-faint focus:text-ink focus:outline-2 focus:outline-brand-500"
-      />
+      <div className="flex h-9 items-center rounded-lg border border-line bg-white pl-3 transition-colors duration-200 hover:border-ink-faint focus-within:border-brand-500">
+        <input
+          id="filter-start-date"
+          type="date"
+          aria-label="Start date"
+          value={startDate}
+          onChange={(event) => onStartDateChange(event.target.value)}
+          className={dateInputClass}
+        />
+        <span className="text-sm text-ink-faint">–</span>
+        <input
+          id="filter-end-date"
+          type="date"
+          aria-label="End date"
+          value={endDate}
+          onChange={(event) => onEndDateChange(event.target.value)}
+          className={`${dateInputClass} pr-2`}
+        />
+      </div>
       {hasFilter && (
         <button
           type="button"

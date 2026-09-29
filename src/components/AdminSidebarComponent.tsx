@@ -69,6 +69,7 @@ const menuItems: MenuItem[] = [
   },
   {
     label: "Payments",
+    href: "/admin/payments",
     icon: (
       <svg {...iconProps}>
         <rect x="3" y="6" width="18" height="13" rx="2" stroke="currentColor" strokeWidth="1.8" />
